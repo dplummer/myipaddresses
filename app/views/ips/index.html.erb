@@ -10,7 +10,7 @@
     <th>Status</th>
     <th>Hostname</th>
     <th>Network use</th>
-    <th>Subnet</th>
+    <th>Prefix</th>
   </tr>
 
 <% @ips.each do |ip| %>
@@ -23,7 +23,7 @@
     <td><%=h ip.status %></td>
     <td><%=h ip.hostname %></td>
     <td><%=h ip.network_use %></td>
-    <td><%=h ip.subnet %></td>
+    <td><%=h ip.prefix %></td>
     <td><%= link_to 'Show', ip %></td>
     <td><%= link_to 'Edit', edit_ip_path(ip) %></td>
     <td><%= link_to 'Destroy', ip, :confirm => 'Are you sure?', :method => :delete %></td>

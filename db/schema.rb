@@ -12,7 +12,7 @@
 ActiveRecord::Schema.define(:version => 20100802153048) do
 
   create_table "ips", :force => true do |t|
-    t.integer  "ipv4_as_int"
+    t.integer  "ipv4_as_u32"
     t.string   "type"
     t.integer  "global_routing_prefix"
     t.integer  "subnet_identifier"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100802153048) do
     t.string   "status"
     t.string   "hostname"
     t.string   "network_use"
-    t.integer  "subnet",                :limit => 1
+    t.integer  "prefix",                :limit => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
