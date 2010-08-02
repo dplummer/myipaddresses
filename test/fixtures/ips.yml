@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ipv4_as_int: 
+  type: MyString
+  global_routing_prefix: 
+  subnet_identifier: 
+  interface_identifier: 
+  status: MyString
+  hostname: MyString
+  network_use: MyString
+  subnet: 
+
+two:
+  ipv4_as_int: 
+  type: MyString
+  global_routing_prefix: 
+  subnet_identifier: 
+  interface_identifier: 
+  status: MyString
+  hostname: MyString
+  network_use: MyString
+  subnet: 

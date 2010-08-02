@@ -1,0 +1,48 @@
+<p>
+  <b>Ipv4 as int:</b>
+  <%=h @ip.ipv4_as_int %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @ip.type %>
+</p>
+
+<p>
+  <b>Global routing prefix:</b>
+  <%=h @ip.global_routing_prefix %>
+</p>
+
+<p>
+  <b>Subnet identifier:</b>
+  <%=h @ip.subnet_identifier %>
+</p>
+
+<p>
+  <b>Interface identifier:</b>
+  <%=h @ip.interface_identifier %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @ip.status %>
+</p>
+
+<p>
+  <b>Hostname:</b>
+  <%=h @ip.hostname %>
+</p>
+
+<p>
+  <b>Network use:</b>
+  <%=h @ip.network_use %>
+</p>
+
+<p>
+  <b>Subnet:</b>
+  <%=h @ip.subnet %>
+</p>
+
+
+<%= link_to 'Edit', edit_ip_path(@ip) %> |
+<%= link_to 'Back', ips_path %>

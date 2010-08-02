@@ -1,0 +1,47 @@
+<h1>New ip</h1>
+
+<% form_for(@ip) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :ipv4_as_int %><br />
+    <%= f.text_field :ipv4_as_int %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :global_routing_prefix %><br />
+    <%= f.text_field :global_routing_prefix %>
+  </p>
+  <p>
+    <%= f.label :subnet_identifier %><br />
+    <%= f.text_field :subnet_identifier %>
+  </p>
+  <p>
+    <%= f.label :interface_identifier %><br />
+    <%= f.text_field :interface_identifier %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :hostname %><br />
+    <%= f.text_field :hostname %>
+  </p>
+  <p>
+    <%= f.label :network_use %><br />
+    <%= f.text_field :network_use %>
+  </p>
+  <p>
+    <%= f.label :subnet %><br />
+    <%= f.text_field :subnet %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', ips_path %>
