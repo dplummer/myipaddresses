@@ -1,15 +1,15 @@
 class CreateIps < ActiveRecord::Migration
   def self.up
     create_table :ips do |t|
-      t.integer unsigned :ipv4_as_int
+      t.column :ipv4_as_int, :"integer unsigned"
       t.string :type
-      t.integer unsigned :global_routing_prefix
-      t.integer unsigned :subnet_identifier
-      t.bigint unsigned :interface_identifier
+      t.column :global_routing_prefix, :"integer unsigned"
+      t.column :subnet_identifier, :"integer unsigned"
+      t.column :interface_identifier, :"bigint unsigned"
       t.string :status
       t.string :hostname
       t.string :network_use
-      t.tinint unsigned :subnet
+      t.column :subnet, :"tinyint unsigned"
 
       t.timestamps
     end

@@ -1,0 +1,35 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (4.2ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (12.9ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateIps (20100802153048)
+  [4;36;1mSQL (6.2ms)[0m   [0;1mCREATE TABLE `ips` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ipv4_as_int` integer unsigned, `type` varchar(255), `global_routing_prefix` integer unsigned, `subnet_identifier` integer unsigned, `interface_identifier` bigint unsigned, `status` varchar(255), `hostname` varchar(255), `network_use` varchar(255), `subnet` tinyint unsigned, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100802153048')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mSHOW FIELDS FROM `ips`[0m
+  [4;36;1mSQL (10.3ms)[0m   [0;1mdescribe `ips`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW KEYS FROM `ips`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing IpsController#index (for 127.0.0.1 at 2010-08-02 09:03:24) [GET]
+  [4;36;1mIp Load (0.5ms)[0m   [0;1mSELECT * FROM `ips` [0m
+Rendering template within layouts/ips
+Rendering ips/index
+Completed in 35ms (View: 29, DB: 1) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing IpsController#new (for 127.0.0.1 at 2010-08-02 09:03:25) [GET]
+  [4;35;1mIp Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `ips`[0m
+Rendering template within layouts/ips
+Rendering ips/new
+Completed in 119ms (View: 23, DB: 3) | 200 OK [http://localhost/ips/new]
