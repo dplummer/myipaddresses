@@ -4,8 +4,8 @@
   <tr>
     <th>Address</th>
     <th>Status</th>
-    <th>Hostname</th>
     <th>Network use</th>
+    <th>Hostname</th>
   </tr>
 
 <% @ipv4s.each do |ip| %>
@@ -24,8 +24,8 @@
   <tr>
     <th>Address</th>
     <th>Status</th>
-    <th>Hostname</th>
     <th>Network use</th>
+    <th>Hostname</th>
   </tr>
 
 <% @ipv6s.each do |ip| %>
@@ -42,4 +42,5 @@
 
 <br style="clear:both;" />
 
-<%= link_to 'New ip', new_ip_path %>
+<%= link_to 'New ip', new_ip_path %> | 
+<%= link_to 'New IPv6 address', new_ipv6_ips_path %>

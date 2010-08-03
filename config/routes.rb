@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :ips
+  map.resources :ips, :collection => {:new_ipv6 => :get}
   map.resources :ipv4s, :controller => :ips
   map.resources :ipv6s, :controller => :ips
   

@@ -1,0 +1,35 @@
+<h1>New IPv6 Address</h1>
+
+<% form_for(@ip) do |f| %>
+<fieldset>
+	<legend>IP Address</legend>
+  <%= f.error_messages %>
+  <div id="type_box" class="line_box">
+    <%= f.label :type %>
+	<div class="input_box"><%= hidden_field_tag 'ip[type]', @ip.type %>Ipv6</div>
+  </div>
+
+<div id="ipv6_box" class="line_box">
+<%= f.label :address, 'IPv6 Address' %>
+<div class="input_box"><%= text_field_tag 'ip[address]', @ip.address, :class => 'ipv6_address' %>/<%= text_field_tag 'ip[prefix]', @ip.prefix, :class => 'prefix_v6' %></div>
+</div>
+
+<div id="status_box" class="line_box">
+<%= f.label :status %>
+<div class="input_box"><%= select_tag 'ip[status]', options_for_select(['Please select'].concat(Ip::STATUSES), @ip.status) %></div>
+</div>
+<div id="network_use_box" class="line_box">
+<%= f.label :network_use %>
+<div class="input_box"><%= select_tag 'ip[network_use]', options_for_select(['Please select'].concat(Ip::NETWORK_USES), @ip.network_use) %></div>
+</div>
+<div id="hostname_box" class="line_box">
+<%= f.label :hostname %>
+<div class="input_box"><%= text_field_tag 'ip[hostname]', @ip.hostname %></div>
+</div>
+<div id="submit_box" class="line_box">
+    <%= f.submit 'Create' %>
+</div>
+</fieldset>
+<% end %>
+
+<%= link_to 'Back', ips_path %>

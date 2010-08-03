@@ -32,7 +32,18 @@ class IpsController < ApplicationController
       format.xml  { render :xml => @ip }
     end
   end
+  
+  # GET /ips/new
+  # GET /ips/new.xml
+  def new_ipv6
+    @ip = Ipv6.new
 
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @ip }
+    end
+  end
+  
   # GET /ips/1/edit
   def edit
     @ip = Ip.find(params[:id])
@@ -42,8 +53,14 @@ class IpsController < ApplicationController
   # POST /ips.xml
   def create
     if params[:ip][:type] == 'Ipv6'
+      params[:ip][:prefix] = params[:ip][:prefix_v6] if params[:ip][:prefix_v6]
+      params[:ip].delete(:prefix_v4)
+      params[:ip].delete(:prefix_v6)
       @ip = Ipv6.new(params[:ip])
     else
+      params[:ip][:prefix] = params[:ip][:prefix_v4] if params[:ip][:prefix_v4]
+      params[:ip].delete(:prefix_v4)
+      params[:ip].delete(:prefix_v6)
       @ip = Ipv4.new(params[:ip])
     end
 

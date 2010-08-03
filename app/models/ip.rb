@@ -22,6 +22,14 @@ class Ip < ActiveRecord::Base
   
   validates_inclusion_of :type, :in => TYPES
   
+  before_validation :remove_please_select
+  
+  def remove_please_select
+    self.status       = '' if status == 'Please select'
+    self.network_use  = '' if network_use == 'Please select'
+    self.type         = '' if type == 'Please select'
+  end
+  
   def full_address
     prefix ? "#{address}/#{prefix}" : address
   end

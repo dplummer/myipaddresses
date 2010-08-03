@@ -3,6 +3,7 @@ table.ips {width:48%;float:left;margin:1em 1%;border:1px solid #333;}
 .ipv4_block {width:2.4em;font-family:monospace;padding:1px;border:1px solid #333;}
 .prefix_v4 {width: 1.6em;font-family:monospace;padding:1px;border:1px solid #333;}
 .prefix_v6 {width: 2.4em;font-family:monospace;padding:1px;border:1px solid #333;}
+.ipv6_address {font-family:monospace;padding:1px;border:1px solid #333;width:25em;}
 fieldset {
 	border:1px solid #CCC;
 	padding:10px;
