@@ -31,6 +31,11 @@ describe Ipv6 do
       ip = Ipv6.new(:hexs => ['1080','','','','8','800','200c','417a'])
       ip.address_as_integers.should == [276824064,0,2260596444381562]
     end
+    
+    it "should convert from compressed string to integer" do
+      ip = Ipv6.new(:address => "1080::8:800:200c:417a")
+      ip.address_as_integers.should == [276824064,0,2260596444381562]
+    end
   end
   
   describe "reduction" do

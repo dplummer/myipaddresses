@@ -50,7 +50,7 @@ class Ipv6 < Ip
   # Not to be confused with the similar IPv6#to_hex method.
   #
   def hexs
-    address.split(":")
+    groups(address).map {|i| "%04x" % i}
   end
   
   def hexs=(hex_array)
@@ -113,7 +113,7 @@ class Ipv6 < Ip
   end
   
   def compress_address
-    str = groups(@address).map{|i| i.to_s 16}.join ":"
+    str = groups(address).map{|i| i.to_s 16}.join ":"
     loop do
       break if str.sub!(/\A0:0:0:0:0:0:0:0\Z/, '::')
       break if str.sub!(/\b0:0:0:0:0:0:0\b/, ':')
