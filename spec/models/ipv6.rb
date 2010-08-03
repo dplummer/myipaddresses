@@ -21,6 +21,16 @@ describe Ipv6 do
       ip = Ipv6.new(:address_as_integers => [276824064,0,2260596444381562])
       ip.address.should == "1080:0000:0000:0000:0008:0800:200c:417a"
     end
+    
+    it "should convert from hex groups to integer" do
+      ip = Ipv6.new(:hexs => ['1080','0000','0000','0000','0008','0800','200c','417a'])
+      ip.address_as_integers.should == [276824064,0,2260596444381562]
+    end
+    
+    it "should convert from compressed hex groups to integer" do
+      ip = Ipv6.new(:hexs => ['1080','','','','8','800','200c','417a'])
+      ip.address_as_integers.should == [276824064,0,2260596444381562]
+    end
   end
   
   describe "reduction" do
@@ -28,5 +38,10 @@ describe Ipv6 do
       ip = Ipv6.new(:address => "1080:0000:0000:0000:0008:0800:200c:417a")
       ip.compressed.should == "1080::8:800:200c:417a"
     end
+    it "should reduce an ipv6 address" do
+      ip = Ipv6.new(:address => "1:2:3:4:5:6:7:8")
+      ip.compressed.should == "1:2:3:4:5:6:7:8"
+    end
   end
+  
 end

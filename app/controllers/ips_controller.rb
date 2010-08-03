@@ -2,7 +2,8 @@ class IpsController < ApplicationController
   # GET /ips
   # GET /ips.xml
   def index
-    @ips = Ip.all
+    @ipv4s = Ipv4.all
+    @ipv6s = Ipv6.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +41,11 @@ class IpsController < ApplicationController
   # POST /ips
   # POST /ips.xml
   def create
-    @ip = Ip.new(params[:ip])
+    if params[:ip][:type] == 'Ipv6'
+      @ip = Ipv6.new(params[:ip])
+    else
+      @ip = Ipv4.new(params[:ip])
+    end
 
     respond_to do |format|
       if @ip.save

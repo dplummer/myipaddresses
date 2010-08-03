@@ -1,36 +1,45 @@
 <h1>Listing ips</h1>
 
-<table>
+<table class="ips" id="ipv4">
   <tr>
-    <th>Ipv4 as int</th>
-    <th>Type</th>
-    <th>Global routing prefix</th>
-    <th>Subnet identifier</th>
-    <th>Interface identifier</th>
+    <th>Address</th>
     <th>Status</th>
     <th>Hostname</th>
     <th>Network use</th>
-    <th>Prefix</th>
   </tr>
 
-<% @ips.each do |ip| %>
+<% @ipv4s.each do |ip| %>
   <tr>
-    <td><%=h ip.ipv4_as_int %></td>
-    <td><%=h ip.type %></td>
-    <td><%=h ip.global_routing_prefix %></td>
-    <td><%=h ip.subnet_identifier %></td>
-    <td><%=h ip.interface_identifier %></td>
+    <td><%= link_to ip.full_address, ip %></td>
     <td><%=h ip.status %></td>
-    <td><%=h ip.hostname %></td>
     <td><%=h ip.network_use %></td>
-    <td><%=h ip.prefix %></td>
-    <td><%= link_to 'Show', ip %></td>
+    <td><%=h ip.hostname %></td>
     <td><%= link_to 'Edit', edit_ip_path(ip) %></td>
     <td><%= link_to 'Destroy', ip, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<table class="ips" id="ipv6">
+  <tr>
+    <th>Address</th>
+    <th>Status</th>
+    <th>Hostname</th>
+    <th>Network use</th>
+  </tr>
+
+<% @ipv6s.each do |ip| %>
+  <tr>
+    <td><%= link_to ip.full_address, ip %></td>
+    <td><%=h ip.status %></td>
+    <td><%=h ip.network_use %></td>
+    <td><%=h ip.hostname %></td>
+    <td><%= link_to 'Edit', edit_ip_path(ip) %></td>
+    <td><%= link_to 'Destroy', ip, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br style="clear:both;" />
 
 <%= link_to 'New ip', new_ip_path %>

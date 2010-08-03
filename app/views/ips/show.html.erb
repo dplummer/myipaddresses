@@ -1,44 +1,20 @@
-<p>
-  <b>Ipv4 as int:</b>
-  <%=h @ip.ipv4_as_int %>
-</p>
 
 <p>
-  <b>Type:</b>
-  <%=h @ip.type %>
+	<span class="label">Address:</span>
+	<span class="data"><%= @ip.full_address %></span>
 </p>
-
 <p>
-  <b>Global routing prefix:</b>
-  <%=h @ip.global_routing_prefix %>
+	<span class="label">Status:</span>
+	<span class="data"><%= @ip.status %></span>
 </p>
-
 <p>
-  <b>Subnet identifier:</b>
-  <%=h @ip.subnet_identifier %>
+	<span class="label">Network use:</span>
+	<span class="data"><%= @ip.network_use %></span>
 </p>
-
 <p>
-  <b>Interface identifier:</b>
-  <%=h @ip.interface_identifier %>
+	<span class="label">Hostname:</span>
+	<span class="data"><%= @ip.hostname %></span>
 </p>
-
-<p>
-  <b>Status:</b>
-  <%=h @ip.status %>
-</p>
-
-<p>
-  <b>Hostname:</b>
-  <%=h @ip.hostname %>
-</p>
-
-<p>
-  <b>Network use:</b>
-  <%=h @ip.network_use %>
-</p>
-
-
 
 <%= link_to 'Edit', edit_ip_path(@ip) %> |
 <%= link_to 'Back', ips_path %>

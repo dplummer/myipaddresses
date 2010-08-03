@@ -1,0 +1,46 @@
+table.ips {width:48%;float:left;margin:1em 1%;border:1px solid #333;}
+.ipv6_block {width:3em;font-family:monospace;padding:1px;border:1px solid #333;}
+.ipv4_block {width:2.4em;font-family:monospace;padding:1px;border:1px solid #333;}
+.prefix_v4 {width: 1.6em;font-family:monospace;padding:1px;border:1px solid #333;}
+.prefix_v6 {width: 2.4em;font-family:monospace;padding:1px;border:1px solid #333;}
+fieldset {
+	border:1px solid #CCC;
+	padding:10px;
+}
+legend {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	letter-spacing: -1px;
+	font-weight: bold;
+	line-height: 1.1;
+	color:#fff;
+	background: #666;
+	border: 1px solid #333;
+	padding: 2px 6px;
+}
+label {
+	padding:2px 4px 3px 3px;
+	width: 120px;
+	margin: 4px;
+	background-color:#CCCCCC;
+	float:left;
+	display: block;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 115%;
+	letter-spacing: -1px;
+	font-weight: normal;
+	line-height: 1.1;
+	color:#666;
+}
+.input_box {
+	padding:2px 4px 3px 3px;
+	margin: 4px;
+	height: 2em;
+	float:left;
+}
+.line_box {
+	clear:both;
+}
+#submit_box {
+	padding-left: 142px;
+}

@@ -10,6 +10,10 @@ class Ipv6 < Ip
   
   validates_presence_of :global_routing_prefix, :subnet_identifier, :interface_identifier
   
+  def full_address
+    prefix ? "#{compressed}/#{prefix}" : compressed
+  end
+  
   def address=(str)
     @address = str if valid_ipv6?(str)
   end
@@ -24,9 +28,9 @@ class Ipv6 < Ip
   
   def address_as_integers
     [
-      hex2dec([hexs[0],hexs[1]].join("")),
-      hex2dec([hexs[2],hexs[3]].join("")),
-      hex2dec([hexs[4],hexs[5],hexs[6],hexs[7]].join(""))
+      hex_blocks_to_dec(hexs[0],hexs[1]),
+      hex_blocks_to_dec(hexs[2],hexs[3]),
+      hex_blocks_to_dec(hexs[4],hexs[5],hexs[6],hexs[7])
     ]
   end
   
@@ -47,6 +51,10 @@ class Ipv6 < Ip
   #
   def hexs
     address.split(":")
+  end
+  
+  def hexs=(hex_array)
+    self.address = hex_array.collect{|hex| hex != '' ? hex : 0}.join(':')
   end
   
   # 
@@ -70,6 +78,10 @@ class Ipv6 < Ip
   
   def address_to_integers
     self.global_routing_prefix, self.subnet_identifier, self.interface_identifier = address_as_integers if @address
+  end
+  
+  def hex_blocks_to_dec(*hex_blocks)
+    hex2dec(hex_blocks.collect {|hex| "%04x" % hex2dec(hex)}.join(''))
   end
   
   def hex2dec hex 
@@ -132,9 +144,9 @@ class Ipv6 < Ip
     return true if /\A[\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*::([\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*)?\Z/ =~ addr
     return true if /\A::([\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*)?\Z/ =~ addr
     # IPv6 (IPv4 compat)
-    return true if /\A[\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*:/ =~ addr && valid_ipv4?($')
-    return true if /\A[\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*::([\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*:)?/ =~ addr && valid_ipv4?($')
-    return true if /\A::([\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*:)?/ =~ addr && valid_ipv4?($')
+    #return true if /\A[\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*:/ =~ addr && valid_ipv4?($')
+    #return true if /\A[\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*::([\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*:)?/ =~ addr && valid_ipv4?($')
+    #return true if /\A::([\dA-Fa-f]{1,4}(:[\dA-Fa-f]{1,4})*:)?/ =~ addr && valid_ipv4?($')
     false
   end
 end

@@ -10,7 +10,6 @@ class Ipv4 < Ip
   
   validates_presence_of :ipv4_as_u32
   
-  
   #
   # Sets the address portion of the Ipv4 object from a string
   #
@@ -48,6 +47,18 @@ class Ipv4 < Ip
     ipv4_as_u32 || address_to_u32
   end
   
+  def chunks
+    if address
+      address.split('.')
+    else
+      []
+    end
+  end
+  
+  def chunks=(chunk_array)
+    self.address = chunk_array.join('.')
+  end
+  
   private
   
   def set_type_to_ipv4
@@ -59,7 +70,7 @@ class Ipv4 < Ip
   end
   
   def address_from_u32(address_as_u32)
-    [24, 16, 8, 0].map { |shift| (address_as_u32 >> shift) & 255 }.join(".")
+    [24, 16, 8, 0].map { |shift| (address_as_u32 >> shift) & 255 }.join(".") if address_as_u32
   end
   
   def u32_from_address(ip)

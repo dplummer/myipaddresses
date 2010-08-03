@@ -1,0 +1,41 @@
+<fieldset>
+	<legend>IP Address</legend>
+  <%= f.error_messages %>
+  <div id="type_box" class="line_box">
+    <%= f.label :type %>
+	<%- if @ip.type == 'Ipv4' -%>
+	<div class="input_box">Ipv4</div>
+	<%- elsif @ip.type == 'Ipv6' -%>
+	<div class="input_box">Ipv6</div>
+	<%- else -%>
+    <div class="input_box"><%= select_tag 'ip[type]', options_for_select(['Please select'].concat(Ip::TYPES), @ip.type) %></div>
+	<%- end -%>
+  </div>
+<%- unless @ip.type == 'Ipv6' -%>
+<div id="ipv4_box" class="line_box">
+<%= f.label :address, "IPv4 Address" %>
+<div class="input_box"><%= text_fields_for_ipv4_address 'ip', @ip %></div>
+</div>
+<%- end -%>
+<%- unless @ip.type == 'Ipv4' -%>
+<div id="ipv6_box" class="line_box">
+<%= f.label :address, 'IPv6 Address' %>
+<div class="input_box"><%= text_fields_for_ipv6_address('ip', @ip) %></div>
+</div>
+<%- end -%>
+<div id="status_box" class="line_box">
+<%= f.label :status %>
+<div class="input_box"><%= select_tag 'ip[status]', options_for_select(['Please select'].concat(Ip::STATUSES), @ip.status) %></div>
+</div>
+<div id="network_use_box" class="line_box">
+<%= f.label :network_use %>
+<div class="input_box"><%= select_tag 'ip[network_use]', options_for_select(['Please select'].concat(Ip::NETWORK_USES), @ip.network_use) %></div>
+</div>
+<div id="hostname_box" class="line_box">
+<%= f.label :hostname %>
+<div class="input_box"><%= f.text_field :hostname %></div>
+</div>
+<div id="submit_box" class="line_box">
+    <%= f.submit button %>
+</div>
+</fieldset>

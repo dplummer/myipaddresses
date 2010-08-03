@@ -21,4 +21,25 @@ class Ip < ActiveRecord::Base
   NETWORK_USES = ['Unicast', 'Broadcast', 'Gateway', 'Network', 'Multicast', 'Anycast']
   
   validates_inclusion_of :type, :in => TYPES
+  
+  def full_address
+    prefix ? "#{address}/#{prefix}" : address
+  end
+  
+  def address
+  end
+  
+  def hexs
+    []
+  end
+  
+  def hexs=(nothing)
+  end
+  
+  def chunks
+    []
+  end
+  
+  def chunks=(nothing)
+  end
 end
